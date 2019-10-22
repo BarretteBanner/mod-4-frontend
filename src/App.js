@@ -14,8 +14,55 @@ import StudentSignUpForm from './Components/Signup/StudentSignUpForm';
 import TeacherSignUpForm from './Components/Signup/TeacherSignUpForm';
 
 export default class App extends React.Component{
+  state = {
+    schools: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/schools')
+    .then(resp => resp.json())
+    .then(schools => this.setState({schools: schools}))
+  }
+
+  handleSubmit = (e) => {
+    e.persist()
+    if(e.target.password.value !== e.target.password_confirmation.value) {
+      alert("Passwords don't match")
+    } else {
+      this.submitCurrentUser(e)
+    }
+  }
+
+
+  submitCurrentUser(e) {
+    e.persist()
+    fetch('http://localhost:3000/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({
+        name: e.target.name.value,
+        email: e.target.email.value,
+        password_digest: e.target.password.value,
+        school_id: e.target.school_id.value,
+        gender: e.target.gender.value,
+        isTeacher: e.target.isTeacher.value
+      })
+    })
+    e.target.reset()
+    if(e.target.isTeacher.value === 'true') {
+      this.setState({
+        current_page: 'teacherHome'
+      })
+    } else {
+      this.setState({
+        current_page: 'studentHome'
+      })
+    }
+  }
+
   render(){
-    
     return(
       <BrowserRouter>
         <Route exact path="/" component={LandingPage}/>
