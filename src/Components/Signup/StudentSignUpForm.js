@@ -1,15 +1,76 @@
 import React from 'react'
 import { Button, Form } from 'semantic-ui-react'
-
-
+import { Redirect } from 'react-router'
 export default class StudentSignUpForm extends React.Component{
+
+    state = {
+        schools: [],
+        redirect: false,
+        userID: null
+      }
+  
+    componentDidMount() {
+        fetch('http://localhost:3000/schools')
+        .then(resp => resp.json())
+        .then(schools => this.setState({schools: schools}))
+    }
+
+    handleSubmit = (e) => {
+        e.persist()
+        if(e.target.password.value !== e.target.password_confirmation.value) {
+          alert("Passwords don't match")
+        } else {
+          this.submitCurrentUser(e)
+        }
+    }
+
+    getUser = (users, email) => {
+        users.forEach(user => {
+            if(user.email === email) {
+                this.setState({
+                    userID: user.id,
+                    redirect: true
+                })
+            }
+        })
+    }
+
+
+    submitCurrentUser(e) {
+        const email = e.target.email.value
+        e.persist()
+        fetch('http://localhost:3000/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({
+            name: e.target.name.value,
+            email: e.target.email.value,
+            password_digest: e.target.password.value,
+            school_id: e.target.school_id.value,
+            gender: e.target.gender.value,
+            isTeacher: e.target.isTeacher.value
+          })
+        })
+        .then(function(response) {
+            return response.json()
+        }).then(function(user) {
+            return fetch('http://localhost:3000/users')
+        }).then(function(response) {
+            return response.json()
+        }).then(users => this.getUser(users, email))
+    }
 
 
     render(){
+        if (this.state.redirect) {
+            return <Redirect push to={`/student/${this.state.userID}/home`}></Redirect>
+        } else {
         return(
             <div>
                 <h1>Student Sign Up Form</h1>
-                <Form onSubmit={(e) => this.props.handleSubmit(e)}>
+                <Form onSubmit={(e) => this.handleSubmit(e)}>
                 <Form.Field required>
                     <label>Name: </label>
                     <input placeholder='Name' name='name'/>
@@ -27,7 +88,7 @@ export default class StudentSignUpForm extends React.Component{
                     <input type='password' name='password_confirmation'/>
                 </Form.Field>
                 <Form.Field control='select' name='school_id' required>
-                {this.props.schools.map(school => {
+                {this.state.schools.map(school => {
                         return <option value={school.id} key={school.id}>{school.name}</option>
                     })}
                 </Form.Field>
@@ -42,5 +103,6 @@ export default class StudentSignUpForm extends React.Component{
             </Form>
             </div>
         )
+    }
     }
 }
