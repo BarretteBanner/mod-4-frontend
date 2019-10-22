@@ -1,30 +1,36 @@
 import React from 'react'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 
 
 export default class StudentSignUpForm extends React.Component{
+
+
     render(){
         return(
             <div>
                 <h1>Student Sign Up Form</h1>
-                <Form onSubmit={(e) => this.props.handleCurrentUser(e)}>
-                <Form.Field>
+                <Form onSubmit={(e) => this.props.passwordCheck(e)}>
+                <Form.Field required>
                     <label>Name: </label>
                     <input placeholder='Name' name='name'/>
                 </Form.Field>
-                <Form.Field>
-                    <label>Username: </label>
+                <Form.Field required>
+                    <label>Email: </label>
                     <input placeholder='email' name='email'/>
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                     <label>Password</label>
                     <input type='password' name='password'/>
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                     <label>Confirm Password</label>
-                    <input type='password' name='confirmPassword'/>
+                    <input type='password' name='password_confirmation'/>
                 </Form.Field>
-                <Form.Field label='Gender' control='select' name='gender'>
+                <Form.Field required>
+                    <label>School ID</label>
+                    <input name='school_id' type='number'/>
+                </Form.Field>
+                <Form.Field label='Gender' control='select' name='gender' required>
                      <option value='male'>Male</option>
                     <option value='female'>Female</option>
                 </Form.Field>
