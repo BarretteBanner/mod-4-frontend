@@ -1,9 +1,11 @@
 import React from 'react'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 export default class TeacherSignUpForm extends React.Component{
     render(){
         return(
             <div>
+                <h1>Teacher Sign Up Form</h1>
              <Form onSubmit={(e) => this.props.handleCurrentUser(e)}>
                 <Form.Field>
                     <label>Name: </label>

@@ -6,7 +6,8 @@ export default class StudentSignUpForm extends React.Component{
     render(){
         return(
             <div>
-            <Form onSubmit={(e) => this.props.handleCurrentUser(e)}>
+                <h1>Student Sign Up Form</h1>
+                <Form onSubmit={(e) => this.props.handleCurrentUser(e)}>
                 <Form.Field>
                     <label>Name: </label>
                     <input placeholder='Name' name='name'/>

@@ -17,7 +17,7 @@ export default class App extends React.Component{
   handleCurrentUser = (e) => {
     e.preventDefault()
     e.persist()
-    fetch('http://localhost:3000/users', {
+    fetch('http://localhost:3000/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type':'application/json'
