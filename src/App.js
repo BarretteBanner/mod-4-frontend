@@ -69,13 +69,13 @@ export default class App extends React.Component{
         <Route path="/signup" component={SignupPage}/>
         <Route path="/signup_student" component={StudentSignUpForm}/>
         <Route path="/signup_teacher" component={TeacherSignUpForm}/>
-        <Route path="/student_home" component={StudentHome}/>
-        <Route path="/teacher_home" component={TeacherHome}/>
-        <Route path="/catalog" component={CourseCatalog}/>
-        <Route path="/enroll_students" component={TeacherClassInfo}/>
-        <Route path="/add_grades" component={AddGradesPage}/>
-        <Route path="/teacher_class" component={TeacherSpecificClass}/>
-        <Route path="/student_class" component={StudentSpecificClass}/>
+        <Route path="/student/:id/home" component={StudentHome}/>
+        <Route path="/teacher/:id/home" component={TeacherHome}/>
+        <Route path="/student/:id/catalog" component={CourseCatalog}/>
+        <Route path="/teacher/:id/enroll_students" component={TeacherClassInfo}/>
+        <Route path="/teacher/:id/add_grades" component={AddGradesPage}/>
+        <Route path="/teacher/:id/class" component={TeacherSpecificClass}/>
+        <Route path="/student/:id/class" component={StudentSpecificClass}/>
         {/* Settings won't have a route. Just an onclick for that page */}
     </BrowserRouter>
     )
