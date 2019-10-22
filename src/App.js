@@ -12,6 +12,10 @@ import ModalScrollingExample from './Components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom' 
 import StudentSignUpForm from './Components/Signup/StudentSignUpForm';
 import TeacherSignUpForm from './Components/Signup/TeacherSignUpForm';
+import Final from './Components/StudentGrades/Final';
+import Homework from './Components/StudentGrades/Homework';
+import Quiz from './Components/StudentGrades/Quiz';
+import Test from './Components/StudentGrades/Test';
 
 export default class App extends React.Component{
   state = {
@@ -76,6 +80,10 @@ export default class App extends React.Component{
         <Route path="/teacher/:id/add_grades" component={AddGradesPage}/>
         <Route path="/teacher/:id/class" component={TeacherSpecificClass}/>
         <Route path="/student/:id/class" component={StudentSpecificClass}/>
+        <Route path="/student/:id/grades/final" component={Final}/>
+        <Route path="/student/:id/grades/homework" component={Homework}/>
+        <Route path="/student/:id/grades/quiz" component={Quiz}/>
+        <Route path="/student/:id/grades/test" component={Test}/>
         {/* Settings won't have a route. Just an onclick for that page */}
     </BrowserRouter>
     )
