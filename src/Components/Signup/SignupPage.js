@@ -19,9 +19,9 @@ export default class SignupPage extends React.Component{
             >Teacher</button>
            </div>
         } else if (this.state.section === "studentSelect"){
-            component = <StudentSignUpForm/>
+            component = <StudentSignUpForm handleCurrentUser={this.props.handleCurrentUser}/>
         } else if (this.state.section === "teacherSelect"){
-            component = <TeacherSignUpForm/>
+            component = <TeacherSignUpForm handleCurrentUser={this.props.handleCurrentUser}/>
         }
         return(
             component
