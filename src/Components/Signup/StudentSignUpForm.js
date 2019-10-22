@@ -28,7 +28,7 @@ export default class StudentSignUpForm extends React.Component{
                     <option value='female'>Female</option>
                 </Form.Field>
                 <Form.Field>
-                    <input type='hidden' value='true' name='isTeacher'/>
+                    <input type='hidden' value='false' name='isTeacher'/>
                 </Form.Field>
                 <Button type='submit'>Submit</Button>
             </Form>
