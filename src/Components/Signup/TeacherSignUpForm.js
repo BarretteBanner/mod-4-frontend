@@ -1,12 +1,14 @@
 import React from 'react'
 import { Button, Form } from 'semantic-ui-react'
-
+import { Redirect } from 'react-router'
 export default class TeacherSignUpForm extends React.Component{
 
     state = {
-      schools: []
-    }
-
+        schools: [],
+        redirect: false,
+        userID: null
+      }
+  
     componentDidMount() {
         fetch('http://localhost:3000/schools')
         .then(resp => resp.json())
@@ -20,8 +22,21 @@ export default class TeacherSignUpForm extends React.Component{
         } else {
           this.submitCurrentUser(e)
         }
-      }
-      submitCurrentUser(e) {
+    }
+
+    getUser = (users, email) => {
+        users.forEach(user => {
+            if(user.email === email) {
+                this.setState({
+                    userID: user.id,
+                    redirect: true
+                })
+            }
+        })
+    }
+
+    submitCurrentUser(e) {
+        const email = e.target.email.value
         e.persist()
         fetch('http://localhost:3000/auth/register', {
           method: 'POST',
@@ -37,9 +52,19 @@ export default class TeacherSignUpForm extends React.Component{
             isTeacher: e.target.isTeacher.value
           })
         })
-        e.target.reset()
-      }  
+        .then(function(response) {
+            return response.json()
+        }).then(function(user) {
+            return fetch('http://localhost:3000/users')
+        }).then(function(response) {
+            return response.json()
+        }).then(users => this.getUser(users, email))
+    }
+
     render(){
+        if (this.state.redirect) {
+            return <Redirect push to={`/teacher/${this.state.userID}/home`}></Redirect>
+        } else {
         return(
             <div>
                 <h1>Teacher Sign Up Form</h1>
@@ -75,6 +100,7 @@ export default class TeacherSignUpForm extends React.Component{
                 <Button type='submit'>Submit</Button>
             </Form>
             </div>
-        )
+        ) 
+    }
     }
 }

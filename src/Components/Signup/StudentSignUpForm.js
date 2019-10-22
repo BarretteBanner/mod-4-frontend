@@ -1,11 +1,12 @@
 import React from 'react'
 import { Button, Form } from 'semantic-ui-react'
-
-
+import { Redirect } from 'react-router'
 export default class StudentSignUpForm extends React.Component{
 
     state = {
-        schools: []
+        schools: [],
+        redirect: false,
+        userID: null
       }
   
     componentDidMount() {
@@ -22,7 +23,21 @@ export default class StudentSignUpForm extends React.Component{
           this.submitCurrentUser(e)
         }
     }
+
+    getUser = (users, email) => {
+        users.forEach(user => {
+            if(user.email === email) {
+                this.setState({
+                    userID: user.id,
+                    redirect: true
+                })
+            }
+        })
+    }
+
+
     submitCurrentUser(e) {
+        const email = e.target.email.value
         e.persist()
         fetch('http://localhost:3000/auth/register', {
           method: 'POST',
@@ -38,10 +53,20 @@ export default class StudentSignUpForm extends React.Component{
             isTeacher: e.target.isTeacher.value
           })
         })
-        e.target.reset()
+        .then(function(response) {
+            return response.json()
+        }).then(function(user) {
+            return fetch('http://localhost:3000/users')
+        }).then(function(response) {
+            return response.json()
+        }).then(users => this.getUser(users, email))
     }
 
+
     render(){
+        if (this.state.redirect) {
+            return <Redirect push to={`/student/${this.state.userID}/home`}></Redirect>
+        } else {
         return(
             <div>
                 <h1>Student Sign Up Form</h1>
@@ -78,5 +103,6 @@ export default class StudentSignUpForm extends React.Component{
             </Form>
             </div>
         )
+    }
     }
 }
