@@ -13,9 +13,7 @@ import ModalScrollingExample from './Components/Settings/Settings';
 export default class App extends React.Component{
   state = {
     current_page: "landing",
-    schools: [],
-    password: '',
-    confirmPassword: ''
+    schools: []
   }
 
 
@@ -28,16 +26,14 @@ export default class App extends React.Component{
   componentDidMount() {
     fetch('http://localhost:3000/schools')
     .then(resp => resp.json())
-    .then(schools => console.log(schools))
+    .then(schools => this.setState({schools: schools}))
   }
 
-  passwordCheck = (e) => {
+  handleSubmit = (e) => {
     e.persist()
     if(e.target.password.value !== e.target.password_confirmation.value) {
-      console.log('yyooooo')
       alert("Passwords don't match")
     } else {
-      debugger
       this.submitCurrentUser(e)
     }
   }
@@ -60,14 +56,24 @@ export default class App extends React.Component{
       })
     })
     e.target.reset()
+    if(e.target.isTeacher.value === 'true') {
+      this.setState({
+        current_page: 'teacherHome'
+      })
+    } else {
+      this.setState({
+        current_page: 'studentHome'
+      })
+    }
   }
 
   render(){
+    console.log(this.state.schools)
     let component = null
     if (this.state.current_page === "landing"){
       component = <LandingPage page={this.state.current_page} changePage={this.changeCurrentPage}/>
     } else if (this.state.current_page === "signup"){
-      component = <SignupPage page={this.state.current_page} changePage={this.changeCurrentPage} passwordCheck={this.passwordCheck}/>
+      component = <SignupPage page={this.state.current_page} changePage={this.changeCurrentPage} handleSubmit={this.handleSubmit} schools={this.state.schools}/>
     } else if (this.state.current_page === "studentHome"){
       component = <StudentHome/>
     } else if (this.state.current_page === "teacherHome"){

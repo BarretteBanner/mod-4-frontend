@@ -6,7 +6,7 @@ export default class TeacherSignUpForm extends React.Component{
         return(
             <div>
                 <h1>Teacher Sign Up Form</h1>
-             <Form onSubmit={(e) => this.props.passwordCheck(e)}>
+             <Form onSubmit={(e) => this.props.handleSubmit(e)}>
                 <Form.Field required>
                     <label>Name: </label>
                     <input placeholder='Name' name='name'/>
@@ -23,9 +23,10 @@ export default class TeacherSignUpForm extends React.Component{
                     <label>Confirm Password</label>
                     <input type='password' name='password_confirmation'/>
                 </Form.Field>
-                <Form.Field required>
-                    <label>School ID</label>
-                    <input name='school_id' type='number'/>
+                <Form.Field control='select' name='school_id' required>
+                {this.props.schools.map(school => {
+                        return <option value={school.id} key={school.id}>{school.name}</option>
+                    })}
                 </Form.Field>
                 <Form.Field label='Gender' control='select' name='gender' required>
                      <option value='male'>Male</option>
