@@ -9,6 +9,7 @@ import AddGradesPage from './Components/Grades/AddGradesPage';
 import TeacherSpecificClass from './Components/TeacherSpecificClass/TeacherSpecificClass';
 import StudentSpecificClass from './Components/StudentSpecifcClass/StudentSpecificClass';
 import ModalScrollingExample from './Components/Settings/Settings';
+import Login from './Components/Signup/Login';
 import {BrowserRouter, Route} from 'react-router-dom' 
 import StudentSignUpForm from './Components/Signup/StudentSignUpForm';
 import TeacherSignUpForm from './Components/Signup/TeacherSignUpForm';
@@ -24,6 +25,7 @@ export default class App extends React.Component{
       <BrowserRouter>
         <Route exact path="/" component={LandingPage}/>
         <Route path="/signup" component={SignupPage}/>
+        <Route path='/login' component={Login}/>
         <Route path="/signup_student" component={StudentSignUpForm}/>
         <Route path="/signup_teacher" component={TeacherSignUpForm}/>
         <Route path="/student/:id/home" component={StudentHome}/>

@@ -1,6 +1,8 @@
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Segment } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
+import NavBar from './NavBar'
+import '../../css/signupForm.css'
 export default class StudentSignUpForm extends React.Component{
 
     state = {
@@ -68,9 +70,13 @@ export default class StudentSignUpForm extends React.Component{
             return <Redirect push to={`/student/${this.state.userID}/home`}></Redirect>
         } else {
         return(
-            <div>
-                <h1>Student Sign Up Form</h1>
-                <Form onSubmit={(e) => this.handleSubmit(e)}>
+            <div className='signupPage'>
+                <NavBar/>
+                <div className="filler1"></div>
+                <div className="filler2"></div>
+                <div className="filler3"></div>
+                <div className="filler4"></div>
+                <Form onSubmit={(e) => this.handleSubmit(e)} className='signupform'>
                 <Form.Field required>
                     <label>Name: </label>
                     <input placeholder='Name' name='name'/>
@@ -99,7 +105,7 @@ export default class StudentSignUpForm extends React.Component{
                 <Form.Field>
                     <input type='hidden' value='false' name='isTeacher'/>
                 </Form.Field>
-                <Button type='submit'>Submit</Button>
+                <Button type='submit' className='signupButton'>Submit</Button>
             </Form>
             </div>
         )
