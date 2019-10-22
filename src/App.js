@@ -9,46 +9,28 @@ import AddGradesPage from './Components/Grades/AddGradesPage';
 import TeacherSpecificClass from './Components/TeacherSpecificClass/TeacherSpecificClass';
 import StudentSpecificClass from './Components/StudentSpecifcClass/StudentSpecificClass';
 import ModalScrollingExample from './Components/Settings/Settings';
+import {BrowserRouter, Route} from 'react-router-dom' 
+import StudentSignUpForm from './Components/Signup/StudentSignUpForm';
+import TeacherSignUpForm from './Components/Signup/TeacherSignUpForm';
 
 export default class App extends React.Component{
-  state = {
-    current_page: "settings"
-  }
-
-
-  changeCurrentPage = (page) => {
-    this.setState({
-      current_page: page
-    })
-  }
-
   render(){
-    let component = null
-    if (this.state.current_page === "landing"){
-      component = <LandingPage page={this.state.current_page} changePage={this.changeCurrentPage}/>
-    } else if (this.state.current_page === "signup"){
-      component = <SignupPage page={this.state.current_page} changePage={this.changeCurrentPage}/>
-    } else if (this.state.current_page === "studentHome"){
-      component = <StudentHome/>
-    } else if (this.state.current_page === "teacherHome"){
-      component = <TeacherHome/>
-    } else if (this.state.current_page === "catalog"){
-      component = <CourseCatalog/>
-    } else if (this.state.current_page === "addStudentArea"){
-      component = <TeacherClassInfo/>
-    } else if (this.state.current_page === "addGrade"){
-      component = <AddGradesPage/>
-    } else if (this.state.current_page === "teacherSpecific"){
-      component = <TeacherSpecificClass/>
-    } else if (this.state.current_page === "studentSpecific"){
-      component = <StudentSpecificClass/>
-    } else if (this.state.current_page === "settings"){
-      component = <ModalScrollingExample/>
-    }
+    
     return(
-      <div>
-        {component}
-      </div>
+      <BrowserRouter>
+        <Route exact path="/" component={LandingPage}/>
+        <Route path="/signup" component={SignupPage}/>
+        <Route path="/signup_student" component={StudentSignUpForm}/>
+        <Route path="/signup_teacher" component={TeacherSignUpForm}/>
+        <Route path="/student_home" component={StudentHome}/>
+        <Route path="/teacher_home" component={TeacherHome}/>
+        <Route path="/catalog" component={CourseCatalog}/>
+        <Route path="/enroll_students" component={TeacherClassInfo}/>
+        <Route path="/add_grades" component={AddGradesPage}/>
+        <Route path="/teacher_class" component={TeacherSpecificClass}/>
+        <Route path="/student_class" component={StudentSpecificClass}/>
+        {/* Settings won't have a route. Just an onclick for that page */}
+    </BrowserRouter>
     )
   }
 }
