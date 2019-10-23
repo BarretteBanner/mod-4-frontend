@@ -1,5 +1,5 @@
 import React from 'react'
-import TeacherClassCard from './TeacherClassCards'
+import TeacherClassCard from './TeacherClassCard'
 import '../../css/teacherHomePage.css'
 export default class TeacherClassCollection extends React.Component{
 
