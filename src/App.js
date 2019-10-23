@@ -18,6 +18,7 @@ import Homework from './Components/StudentGrades/Homework';
 import Quiz from './Components/StudentGrades/Quiz';
 import Test from './Components/StudentGrades/Test';
 import { CreateCourseForm } from './Components/Teacher/CreateCourseForm';
+import AddAssignments from './Components/TeacherSpecificClass/AddAssignments';
 
 export default class App extends React.Component{
 
@@ -34,9 +35,10 @@ export default class App extends React.Component{
         <Route path="/teacher/:id/home" component={TeacherHome}/>
         <Route path="/student/:id/catalog" component={CourseCatalog}/>
         <Route path="/teacher/:id/enroll_students" component={TeacherClassInfo}/>
-        <Route path="/teacher/:id/add_grades" component={AddGradesPage}/>
-        <Route path="/teacher/:id/class" component={TeacherSpecificClass}/>
-        <Route path="/student/:id/class" component={StudentSpecificClass}/>
+        <Route exact path="/teacher/:id/class/:id2/add_grades" component={AddGradesPage}/>
+        <Route exact path="/teacher/:id/class/:id2" component={TeacherSpecificClass}/>
+        <Route exact path="/teacher/:id/class/:id2/add_assignment" component={AddAssignments}/>
+        <Route path="/student/:id/class/:id2" component={StudentSpecificClass}/>
         <Route path="/student/:id/grades/final" component={Final}/>
         <Route path="/student/:id/grades/homework" component={Homework}/>
         <Route path="/student/:id/grades/quiz" component={Quiz}/>
