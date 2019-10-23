@@ -4,10 +4,10 @@ export default class GradeBoxes extends React.Component{
     render(){
         return(
             <div className="gradeBoxes">
-             <h1>Box1</h1>
-             <h1>Box2</h1>
-             <h1>Box3</h1>
-             <h1>Box4</h1>
+             <h1 className="test">Test</h1>
+             <h1 className="quiz">Quiz</h1>
+             <h1 className="homework">Homework</h1>
+             <h1 className="final">Final</h1>
             </div>
         )
     }
