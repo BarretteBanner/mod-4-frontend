@@ -9,11 +9,10 @@ export default class TeacherHome extends React.Component{
     }
 
     render(){
-        console.log(this.state.teacherID)
         return(
             <div>
                 <NavBarTeacher teacherID={this.state.teacherID}/>
-                <TeacherClassCollection/> 
+                <TeacherClassCollection teacherID={this.state.teacherID}/> 
                 <TeacherAllCalendar/>
             </div>
         )
