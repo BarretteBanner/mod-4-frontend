@@ -24,6 +24,7 @@ export default class App extends React.Component{
     return(
       <BrowserRouter>
         <Route exact path="/" component={LandingPage}/>
+        <Route path='/home' component={LandingPage}/>
         <Route path="/signup" component={SignupPage}/>
         <Route path='/login' component={Login}/>
         <Route path="/signup_student" component={StudentSignUpForm}/>

@@ -73,3 +73,8 @@
     align-content: center;
     justify-content: center;
 }
+
+.loginform {
+    grid-column: 3;
+    grid-row: 3;
+}
