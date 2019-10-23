@@ -9,7 +9,7 @@ export default class StudentHome extends React.Component{
         return(
             <div>
                 <NavBar studentID={this.props.match.params.id}/>
-                <ClassCollection/>
+                <ClassCollection studentID={this.props.match.params.id}/>
                 <StudentAllCalendar/>
             </div>
         )

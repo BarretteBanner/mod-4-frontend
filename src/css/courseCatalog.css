@@ -8,3 +8,8 @@
     grid-column: 3;
     border: 1px solid black;
 }
+
+.filter{
+    grid-column: 1;
+    grid-row: 1 / span 3
+}

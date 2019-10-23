@@ -26,6 +26,10 @@ export class CreateCourseForm extends Component {
             })
         }).then(function(response) {
             return response.json()
+        }).then(function(user) {
+            return fetch('http://localhost:3000/courses')
+        }).then(function(response) {
+            return response.json()
         })
         this.setState({redirect: true})
         e.target.reset()

@@ -10,9 +10,8 @@ export default class CourseCatalog extends React.Component{
     render(){
         return(
             <div>
-                <NavBar/>
-                <Filter/>
-                <CourseCollection/>
+                <NavBar studentID={this.props.match.params.id}/>
+                <CourseCollection studentID={this.props.match.params.id}/>
             </div>
         )
     }
