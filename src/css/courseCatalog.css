@@ -1,0 +1,10 @@
+.courseCollection{
+    display: grid;
+    grid-template-columns:  1fr 0.5fr 2fr 0.5fr 1fr;
+    margin-top: 10%
+}
+
+.course{
+    grid-column: 3;
+    border: 1px solid black;
+}

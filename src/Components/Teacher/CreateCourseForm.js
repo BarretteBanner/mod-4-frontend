@@ -24,6 +24,8 @@ export class CreateCourseForm extends Component {
                user_id: e.target.userID.value,
                description: e.target.description.value
             })
+        }).then(function(response) {
+            return response.json()
         })
         this.setState({redirect: true})
         e.target.reset()
