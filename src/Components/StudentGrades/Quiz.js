@@ -3,7 +3,7 @@ export default class Quiz extends React.Component{
     render(){
         return(
             <div>
-                <table style={{border: "1px solid black"}}>
+                <table style={{border: "1px solid black", width: "100vw", height: '50vh'}}>
                 <caption>Quiz</caption>
                     <tr style={{border: "1px solid black"}}>
                         <th style={{border: "1px solid black"}}>Date</th>

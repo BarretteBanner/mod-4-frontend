@@ -3,7 +3,7 @@ export default class Test extends React.Component{
     render(){
         return(
             <div>
-                <table style={{border: "1px solid black", width: "100%", marginRight:10}}>
+                <table style={{border: "1px solid black", width: "100vw", height: '50vh'}}>
                 <caption>Test</caption>
                     <tr style={{border: "1px solid black"}}>
                         <th style={{border: "1px solid black"}}>Date</th>

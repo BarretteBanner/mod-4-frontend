@@ -6,8 +6,8 @@ export default class StudentHome extends React.Component{
     render(){
         return(
             <div>
-                <StudentAllCalendar/>
                 <ClassCollection/>
+                <StudentAllCalendar/>
             </div>
         )
     }
