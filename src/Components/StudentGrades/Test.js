@@ -10,6 +10,7 @@ export default class Test extends React.Component{
                         <th style={{border: "1px solid black"}}>Name</th>
                         <th style={{border: "1px solid black"}}>Grade</th>
                     </tr>
+                    {/* put for each here */}
                     <tr style={{border: "1px solid black"}}>
                         <td>05/17/2019</td>
                         <td>Test 5</td>

@@ -4,7 +4,7 @@
     width: 100vw;
     display: grid;
     grid-template-columns: 0.5fr 2fr 0.5fr;
-    grid-template-rows: 0.5fr 0.5fr 3fr 0.5fr 1fr 0.5fr 1fr;
+    grid-template-rows: 0.5fr 1fr 3fr 0.5fr 1fr 0.5fr 1fr;
 }
 
 .gradeBoxes{
@@ -14,9 +14,42 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     text-align: center;
-    align-items: center;
     background-color: white;
 }
+.test{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    padding: 25%;
+    margin: 0px
+}
+
+.quiz{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding: 25%;
+    margin: 0px
+}
+
+.homework{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    padding: 25%;
+    margin: 0px;
+}
+
+.final{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 25%;
+    margin: 0px
+}
+
+
+
 
 .calculator{
     grid-column: 2;
