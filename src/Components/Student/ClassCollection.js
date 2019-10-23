@@ -1,5 +1,6 @@
 import React from 'react'
 import ClassCards from './ClassCards'
+import Announcements from './Announcements'
 export default class ClassCollection extends React.Component{
     render(){
         return(
@@ -14,6 +15,7 @@ export default class ClassCollection extends React.Component{
                 <ClassCards/>
                 <ClassCards/>
                 </div>
+                <Announcements/>
             </div>
         )
     }
