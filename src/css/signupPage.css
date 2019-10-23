@@ -1,0 +1,71 @@
+.signupPageMain {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 100vh
+}
+.navBarHeader img {
+    height: 80px;
+    margin-left: 40px;
+}
+
+.navBarHeader {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+}
+.navBarHeader * {
+    display: inline;
+}
+
+.navBarHeader li {
+    margin: 20px;
+}
+
+.navBarHeader li a {
+    color: black;
+    text-decoration: none;
+}
+.navBar{
+    grid-column: 1/ span 10;
+    grid-row: 1 / span 2
+}
+
+.studentSignUp{
+    color: red;
+    background: grey;
+    grid-column: 2 / span 3;
+    grid-row: 4 / span 4; 
+    box-shadow: 0px 5px 45px 15px black;
+    border-radius: 10px;
+}
+
+.student {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 40%;
+    font-size: 3em;
+}
+
+.teacherSignUp{
+    color: red;
+    background: grey;
+    grid-column: 7 / span 3;
+    grid-row: 4 / span 4;
+    box-shadow: 0px 5px 45px 15px black;
+    border-radius: 10px;
+}
+.teacher {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 40%;
+    font-size: 3em; 
+}
