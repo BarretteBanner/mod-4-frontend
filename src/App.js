@@ -17,6 +17,7 @@ import Final from './Components/StudentGrades/Final';
 import Homework from './Components/StudentGrades/Homework';
 import Quiz from './Components/StudentGrades/Quiz';
 import Test from './Components/StudentGrades/Test';
+import { CreateCourseForm } from './Components/Teacher/CreateCourseForm';
 
 export default class App extends React.Component{
 
@@ -40,6 +41,7 @@ export default class App extends React.Component{
         <Route path="/student/:id/grades/homework" component={Homework}/>
         <Route path="/student/:id/grades/quiz" component={Quiz}/>
         <Route path="/student/:id/grades/test" component={Test}/>
+        <Route path='/teacher/:id/create_course' component={CreateCourseForm}/>
         {/* Settings won't have a route. Just an onclick for that page */}
     </BrowserRouter>
     )
