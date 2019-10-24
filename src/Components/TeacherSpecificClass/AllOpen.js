@@ -1,10 +1,16 @@
 import React from 'react'
+import OpenCard from './OpenCard';
 
 export default class AllOpen extends React.Component{
     render(){
         return(
             <div>
-             <h1>Here will be all open assignments</h1>
+                <button
+                onClick={() => this.props.switch()}
+                >Show Only 8</button>
+                {this.props.assignments.map(assignment => {
+                return <OpenCard key={assignment.id} assignment={assignment}/>
+                })}   
             </div>
         )
     }

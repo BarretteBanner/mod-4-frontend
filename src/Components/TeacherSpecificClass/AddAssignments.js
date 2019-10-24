@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Segment } from 'semantic-ui-react'
+import { Button, Form} from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 export class AddAssignments extends Component {
 
@@ -35,6 +35,7 @@ export class AddAssignments extends Component {
                      <option value='homework'>Homework</option>
                      <option value='quiz'>Quiz</option>
                      <option value='test'>Test</option>
+                     <option value='final'>Final</option>
                 </Form.Field>
                 <Form.Input type='hidden' name='isComplete' value='false'/>
                 <Form.Input type='hidden' name='courseID' value={`${this.props.match.params.id2}`}/>

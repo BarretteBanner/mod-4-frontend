@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Segment } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 export class CreateCourseForm extends Component {
 
@@ -24,6 +24,10 @@ export class CreateCourseForm extends Component {
                user_id: e.target.userID.value,
                description: e.target.description.value
             })
+        }).then(function(response) {
+            return response.json()
+        }).then(function(user) {
+            return fetch('http://localhost:3000/courses')
         }).then(function(response) {
             return response.json()
         })

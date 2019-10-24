@@ -1,27 +1,73 @@
 import React from 'react'
-export default class Test extends React.Component{
-    render(){
-        return(
-            <div>
-                <table style={{border: "1px solid black", width: "100vw", height: '50vh'}}>
-                <caption>Test</caption>
-                    <tr style={{border: "1px solid black"}}>
-                        <th style={{border: "1px solid black"}}>Date</th>
-                        <th style={{border: "1px solid black"}}>Name</th>
-                        <th style={{border: "1px solid black"}}>Grade</th>
-                    </tr>
-                    {/* put for each here */}
-                    <tr style={{border: "1px solid black"}}>
-                        <td>05/17/2019</td>
-                        <td>Test 5</td>
-                        <td>50</td>
-                    </tr>
-                    <tr style={{border: "1px solid black"}}>
-                        <td>05/31/2019</td>
-                        <td>Test 6</td>
-                        <td>94</td>
-                    </tr>
-                </table>
+import '../../css/Test.css'
+
+
+export default class Test extends React.Component {
+    state = {
+        grades: [],
+        assignments: [],
+        gradeAssignment: []
+
+    }
+    componentDidMount() {
+        fetch('http://localhost:3000/grades')
+        .then(resp => resp.json())
+        .then(grades => this.getUserGrades(grades))
+    }
+
+    getUserGrades = (grades) => {
+        grades.forEach(grade => {
+            if(grade.user_id === parseInt(this.props.match.params.id)) {
+                this.setState({grades: this.state.grades.concat(grade)}, () => {
+                    fetch('http://localhost:3000/assignments')
+                    .then(resp => resp.json())
+                    .then(assignments => this.getUserAssignmentGrades(assignments))
+                })
+            }
+        })
+    }
+
+    getUserAssignmentGrades = (assignments) => {
+        this.setState({assignments: assignments}, () => {
+            this.getGradeAssignments()
+        })
+    }
+
+    getGradeAssignments = () => {
+        let array = []
+        this.state.grades.forEach(grade => {
+            this.state.assignments.forEach(assignment => {
+                if (grade.assignment_id === assignment.id){
+                    array.push(assignment)
+                }
+            })
+        })
+        this.setState({
+            gradeAssignment: array
+        })
+    }
+ 
+    render() {
+        console.log(this.state.assignments)
+        console.log(this.state.gradeAssignment)
+        if (this.state.gradeAssignment.length === 0){
+            return <h1>Loading...</h1>
+        }
+        return (
+            <div className="TestPage">
+                {this.state.grades.map((grade, index) => {
+                    return<div className="Grades">
+                        <div>
+                            <h1>0.5/12/2019</h1>
+                        </div>
+                        <div>
+                            <h1>{this.state.gradeAssignment[index].name}</h1>
+                        </div>
+                        <div>
+                           <h1>{grade.value}</h1> 
+                        </div>
+                    </div>   
+                })}
             </div>
         )
     }
