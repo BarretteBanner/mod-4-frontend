@@ -11,7 +11,7 @@ export default class TeacherHome extends React.Component{
 
     getTeacherCourses(courses) {
         let teacherCourses = []
-        courses.map(course => {
+        courses.forEach(course => {
         if (course.user_id === parseInt(this.state.teacherID)) {
                 teacherCourses.push(course)
         }
@@ -26,9 +26,6 @@ export default class TeacherHome extends React.Component{
     }
 
     render(){
-        if(this.state.courses === []) {
-            return <h1>Loading...</h1>
-        }
         return(
             <div>
                 <NavBarTeacher teacherID={this.state.teacherID}/>

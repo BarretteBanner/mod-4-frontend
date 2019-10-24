@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Segment } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import { Redirect } from 'react-router'
 export class CreateCourseForm extends Component {
 

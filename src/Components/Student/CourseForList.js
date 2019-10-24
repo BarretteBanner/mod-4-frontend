@@ -9,7 +9,7 @@ export default class CourseForList extends React.Component{
     }
 
     getTeacher = (users) => {
-        users.map(user => {
+        users.forEach(user => {
             if(user.id === this.props.course.user_id) {
                 this.setState({
                     teacher: user.name

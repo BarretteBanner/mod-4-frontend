@@ -13,7 +13,7 @@ export default class TeacherSpecificClass extends React.Component{
     }
 
     getAssignments = (assignment) => {
-        assignment.map(ass => {
+        assignment.forEach(ass => {
             if(ass.course_id === parseInt(this.props.match.params.id2)) {
                 this.setState({allAssignments: this.state.allAssignments.concat(ass)}, () => {
                     if(this.state.allAssignments.length > 8) {
@@ -45,9 +45,9 @@ export default class TeacherSpecificClass extends React.Component{
         } else if (this.state.all === false){
             selector = <First8Open assignments={this.state.first8Assignments} switch={this.switchShow}/>
         }
-        if (this.state.first8Assignments.length === 0){
-            return <h1>Loading...</h1>
-        }
+        // if (this.state.first8Assignments.length === 0){
+        //     return <h1>Loading...</h1>
+        // }
         return(
             <div>
                 <NavBarTeacherSpecificClass teacherID={this.props.match.params.id} courseID={this.props.match.params.id2} />

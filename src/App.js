@@ -8,7 +8,6 @@ import TeacherClassInfo from './Components/ClassAccept/TeacherClassInfo';
 import AddGradesPage from './Components/Grades/AddGradesPage';
 import TeacherSpecificClass from './Components/TeacherSpecificClass/TeacherSpecificClass';
 import StudentSpecificClass from './Components/StudentSpecifcClass/StudentSpecificClass';
-import ModalScrollingExample from './Components/Settings/Settings';
 import Login from './Components/Signup/Login';
 import {BrowserRouter, Route} from 'react-router-dom' 
 import StudentSignUpForm from './Components/Signup/StudentSignUpForm';
@@ -19,6 +18,7 @@ import Quiz from './Components/StudentGrades/Quiz';
 import Test from './Components/StudentGrades/Test';
 import { CreateCourseForm } from './Components/Teacher/CreateCourseForm';
 import AddAssignments from './Components/TeacherSpecificClass/AddAssignments';
+import addStudentToCourse from './Components/TeacherSpecificClass/addStudentToCourse';
 
 export default class App extends React.Component{
 
@@ -38,11 +38,12 @@ export default class App extends React.Component{
         <Route exact path="/teacher/:id/class/:id2/add_grades" component={AddGradesPage}/>
         <Route exact path="/teacher/:id/class/:id2" component={TeacherSpecificClass}/>
         <Route exact path="/teacher/:id/class/:id2/add_assignment" component={AddAssignments}/>
+        <Route exact path="/teacher/:id/class/:id2/add_student" component={addStudentToCourse}/>
         <Route path="/student/:id/class/:id2" component={StudentSpecificClass}/>
-        <Route path="/student/:id/grades/final" component={Final}/>
-        <Route path="/student/:id/grades/homework" component={Homework}/>
-        <Route path="/student/:id/grades/quiz" component={Quiz}/>
-        <Route path="/student/:id/grades/test" component={Test}/>
+        <Route path="/student/:id/grades/:id2/final" component={Final}/>
+        <Route path="/student/:id/grades/:id2/homework" component={Homework}/>
+        <Route path="/student/:id/grades/:id2/quiz" component={Quiz}/>
+        <Route path="/student/:id/grades/:id2/test" component={Test}/>
         <Route path='/teacher/:id/create_course' component={CreateCourseForm}/>
         {/* Settings won't have a route. Just an onclick for that page */}
     </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseForList from './CourseForList'
 import "../../css/courseCatalog.css";
-import { Button, Form, Radio, Select } from 'semantic-ui-react'
+import { Button, Form, Radio } from 'semantic-ui-react'
 
 export default class CourseCollection extends React.Component{
     state = {
@@ -30,7 +30,7 @@ export default class CourseCollection extends React.Component{
         } else if (this.state.value === 'subject') {
             this.setState({filteredCourses: this.state.courses.filter(course => course.subject.toLowerCase().includes(e.target.search.value.toLowerCase()))})
         } else if (this.state.value === 'teacher') {
-            this.state.users.map(user => {
+            this.state.users.forEach(user => {
                 if (user.name.includes(e.target.search.value)) {
                     this.setState({filteredCourses: this.state.courses.filter(course => course.user_id === user.id)})
                 }

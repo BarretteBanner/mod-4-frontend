@@ -6,14 +6,9 @@ export default class ClassCollection extends React.Component{
         return(
             <div className='classPageStudent'>
                 <div className='classCollectionStudent'>
-                <ClassCards/>
-                <ClassCards/>
-                <ClassCards/>
-                <ClassCards/>
-                <ClassCards/>
-                <ClassCards/>
-                <ClassCards/>
-                <ClassCards/>
+                    {this.props.courses.map(course => {
+                      return <ClassCards key={course.id} course={course} studentID={this.props.studentID}/>
+                    })}
                 </div>
                 <Announcements/>
             </div>
