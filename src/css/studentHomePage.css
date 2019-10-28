@@ -1,5 +1,4 @@
 .classPageStudent{
-    background-color: blue;
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -7,15 +6,19 @@
     grid-template-rows: 0.5fr 0.5fr 2fr 1fr;
 }
 
+.classCardStudent{
+    border: 1px solid black;
+}
 
 .classCollectionStudent{
-    background: orange;
+    border: 1px solid black;
     grid-column: 2;
     grid-row: 3;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: stretch;
     align-items: stretch;
+    
 }
 
 .announcements{

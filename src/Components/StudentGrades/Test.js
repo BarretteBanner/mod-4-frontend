@@ -49,13 +49,16 @@ export default class Test extends React.Component {
             return <h1>Loading...</h1>
         }
         return (
-            <div>
-                {this.state.gradesForType.map(grade => {
-                    return <div>
-                    <h1>{grade.assignment.name}</h1>
-                    <h1>{grade.value}</h1>
-                    </div>
-                })}
+            <div className='TestPage'>
+                <h1 className='title'>Test Grades</h1>
+                <div className='GradesArea'>
+                    {this.state.gradesForType.map(grade => {
+                        return <div className = 'specificGrade'>
+                        <h1 className='name'>{grade.assignment.name}</h1>
+                        <h1 className='grade'>{grade.value}</h1>
+                        </div>
+                    })}
+                </div>
             </div>
         )
     }

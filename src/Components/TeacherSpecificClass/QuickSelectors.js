@@ -4,11 +4,12 @@ import ItemForSelectors from './ItemForSelectors'
 export default class QuickSelectors extends React.Component{
     render(){
         return(
-            <div>
-                <ItemForSelectors/>
-                <ItemForSelectors/>
-                <ItemForSelectors/>
-                <ItemForSelectors/>
+            <div className='announcements'>
+                <div >
+                    {this.props.announcements.map(announcement => {
+                        return<ItemForSelectors announcement = {announcement} key={announcement.id}/>
+                    })}
+                </div>
             </div>
         )
     }

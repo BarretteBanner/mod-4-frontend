@@ -24,6 +24,7 @@ export default class StudentHome extends React.Component{
         .then(resp => resp.json())
         .then(courses => this.getStudentsCourses(courses))
     }
+
     render(){
         return(
             <div>

@@ -86,7 +86,6 @@ export class addStudentToCourse extends Component {
         }
         return (
             <div>
-                <h1>List of pending students to be accepted into the course</h1>
                 {this.state.students.map(student =>{
                     return<div>
                          <h1>{student.name}</h1>
@@ -97,7 +96,7 @@ export class addStudentToCourse extends Component {
                 {this.state.users.map(student =>{
                     if(this.state.enrolledStudentIDs.includes(student.id.toString())) {
                         return<div>
-                            <h1>{student.name}</h1>
+                            <p>{student.name}</p>
                             </div>
                     }
                 })}

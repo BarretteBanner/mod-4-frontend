@@ -85,16 +85,16 @@ export default class StudentSpecificClass extends React.Component{
                 <NavBar studentID={this.props.match.params.id}/>
                 <GradeBoxes studentID={this.props.match.params.id} classID={this.props.match.params.id2}/>
                 <Calculator
-                testArrayLength = {this.state.studentTest.length}
-                totalTest={this.state.totalTest}
-                averageTest={this.state.averageTest}
-                quizArrayLength = {this.state.studentQuiz.length}
-                totalQuiz={this.state.totalQuiz}
-                averageQuiz={this.state.averageQuiz}
-                hwArrayLength = {this.state.studentHW.length}
-                totalHW={this.state.totalHW}
-                averageHW={this.state.averageHW}
-                totalFinal={this.state.totalFinal}
+                    testArrayLength = {this.state.studentTest.length}
+                    totalTest={this.state.totalTest}
+                    averageTest={this.state.averageTest}
+                    quizArrayLength = {this.state.studentQuiz.length}
+                    totalQuiz={this.state.totalQuiz}
+                    averageQuiz={this.state.averageQuiz}
+                    hwArrayLength = {this.state.studentHW.length}
+                    totalHW={this.state.totalHW}
+                    averageHW={this.state.averageHW}
+                    totalFinal={this.state.totalFinal}
 
                 />
                 <Documents/>

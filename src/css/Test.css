@@ -1,17 +1,43 @@
 .TestPage{
     display: grid;
     height: 100vh;
-    grid-template-columns: 1fr 1fr 4fr 1fr 1fr;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr 2fr 1fr;
     margin: 0px;
 }
 
-.Grades{
-    grid-column: 3;
+.GradesArea{
+    grid-column: 2;
+    grid-row: 3;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     margin: 0px;
-    justify-content: center
+    justify-content: center;
+    border: 1px solid black;
 }
 .Grades > h1{
     margin: 0px
+}
+
+.specificGrade{
+    display: grid;
+    grid-column: 1fr 1fr;
+    border-bottom: 1px solid black
+}
+
+.name{
+    grid-column: 1;
+    margin: 0px;
+}
+
+.grade{
+    grid-column: 2;
+    margin: 0px;
+    text-align: center;
+}
+
+.title{
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
 }
