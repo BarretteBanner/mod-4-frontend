@@ -22,36 +22,38 @@ export class Calendar extends Component {
           events: [
             {
               id: 1,
-              text: "Event 1",
+              text: "Test Today!",
               start: "2019-10-04",
-              end: "2019-10-06",
+              end: "2019-10-04",
               backColor: "#cc0000"
             },
             {
               id: 2,
-              text: "Event 2",
-              start: "2019-10-04",
-              end: "2019-10-05",
+              text: "Staring Labs",
+              start: "2019-10-08",
+              end: "2019-10-08",
               backColor: "#e69138"
             },
             {
               id: 3,
-              text: "Event 3",
-              start: "2019-10-04",
-              end: "2019-10-04",
+              text: "Pizza Party",
+              start: "2019-10-12",
+              end: "2019-10-12",
               backColor: "#3c78d8"
             },
             {
               id: 4,
-              text: "Event 4",
-              start: "2019-10-11",
-              end: "2019-10-11"
+              text: "Presentation Today!",
+              start: "2019-10-24",
+              end: "2019-10-24",
+              backColor: "#3c78d8"
             },
             {
               id: 5,
-              text: "Event 5",
-              start: "2019-10-11",
-              end: "2019-10-11"
+              text: "Final",
+              start: "2019-10-31",
+              end: "2019-10-31",
+              backColor: "#cc0000"
             },
           ]
         });

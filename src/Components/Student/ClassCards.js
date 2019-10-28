@@ -14,9 +14,9 @@ export default class ClassCards extends React.Component{
             return <Redirect push to={`/student/${this.props.studentID}/class/${this.props.course.id}`}></Redirect>
         }
         return(
-            <div onClick={() => this.handleClick()}>
-             <h1>{this.props.course.name}</h1>
-             <h2>{this.props.course.subject}</h2>
+            <div onClick={() => this.handleClick()} className='classCardStudent'>
+             <h2>{this.props.course.name}</h2>
+             <h3>{this.props.course.subject}</h3>
              <p>{this.props.course.description}</p>
             </div>
         )

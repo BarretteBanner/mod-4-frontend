@@ -5,69 +5,60 @@ import '../../css/Test.css'
 export default class Test extends React.Component {
     state = {
         grades: [],
-        assignments: [],
-        gradeAssignment: []
-
+        readyToLoad: 0,
+        userGrades: [],
+        gradesForType: []
     }
     componentDidMount() {
         fetch('http://localhost:3000/grades')
         .then(resp => resp.json())
-        .then(grades => this.getUserGrades(grades))
+        .then(grades => this.setState({grades: grades}), () => {this.filterByUser()})
     }
 
-    getUserGrades = (grades) => {
-        grades.forEach(grade => {
-            if(grade.user_id === parseInt(this.props.match.params.id)) {
-                this.setState({grades: this.state.grades.concat(grade)}, () => {
-                    fetch('http://localhost:3000/assignments')
-                    .then(resp => resp.json())
-                    .then(assignments => this.getUserAssignmentGrades(assignments))
-                })
-            }
-        })
+    componentDidUpdate() {
+        if (this.state.readyToLoad === 0 && this.state.grades.length !== 0){
+            this.filterByUser()
+        }
+        if (this.state.readyToLoad === 1){
+            this.filterByType()
+        }
     }
 
-    getUserAssignmentGrades = (assignments) => {
-        this.setState({assignments: assignments}, () => {
-            this.getGradeAssignments()
-        })
-    }
-
-    getGradeAssignments = () => {
-        let array = []
-        this.state.grades.forEach(grade => {
-            this.state.assignments.forEach(assignment => {
-                if (grade.assignment_id === assignment.id){
-                    array.push(assignment)
-                }
-            })
-        })
+    filterByUser = () => {
+        let gradesForUser = this.state.grades.filter(grade => grade.user_id === parseInt(this.props.match.params.id))
+        console.log(gradesForUser)
         this.setState({
-            gradeAssignment: array
+            readyToLoad: 1,
+            userGrades: gradesForUser
         })
     }
- 
+
+    filterByType = () => {
+        console.log('YYYYYYYYYYYYYYYYYYYYYYY')
+        let gradesForType = this.state.userGrades.filter(grade => grade.assignment.category === 'test')
+        this.setState({
+            gradesForType: gradesForType,
+            readyToLoad: 2
+        })
+    }
+
+    
+
     render() {
-        console.log(this.state.assignments)
-        console.log(this.state.gradeAssignment)
-        if (this.state.gradeAssignment.length === 0){
+        if (this.state.readyToLoad !== 2){
             return <h1>Loading...</h1>
         }
         return (
-            <div className="TestPage">
-                {this.state.grades.map((grade, index) => {
-                    return<div className="Grades">
-                        <div>
-                            <h1>0.5/12/2019</h1>
+            <div className='TestPage'>
+                <h1 className='title'>Test Grades</h1>
+                <div className='GradesArea'>
+                    {this.state.gradesForType.map(grade => {
+                        return <div className = 'specificGrade'>
+                        <h1 className='name'>{grade.assignment.name}</h1>
+                        <h1 className='grade'>{grade.value}</h1>
                         </div>
-                        <div>
-                            <h1>{this.state.gradeAssignment[index].name}</h1>
-                        </div>
-                        <div>
-                           <h1>{grade.value}</h1> 
-                        </div>
-                    </div>   
-                })}
+                    })}
+                </div>
             </div>
         )
     }

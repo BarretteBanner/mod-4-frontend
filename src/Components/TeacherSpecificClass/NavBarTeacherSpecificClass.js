@@ -12,6 +12,7 @@ export class NavBarTeacherSpecificClass extends Component {
                     <li><Link to={`/teacher/${this.props.teacherID}/class/${this.props.courseID}/add_assignment`}>Add Assignments</Link></li>
                     <li><Link to={`/teacher/${this.props.teacherID}/class/${this.props.courseID}/add_grades`}>Add Grades</Link></li>
                     <li><Link to={`/teacher/${this.props.teacherID}/class/${this.props.courseID}/add_student`}>Add Students To Course</Link></li>
+                    <li><Link to={`/teacher/${this.props.teacherID}/class/${this.props.courseID}/add_document`}>Add Documents To Course</Link></li>
                 </ul>
                 </nav>
               </header>

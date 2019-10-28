@@ -19,6 +19,7 @@ import Test from './Components/StudentGrades/Test';
 import { CreateCourseForm } from './Components/Teacher/CreateCourseForm';
 import AddAssignments from './Components/TeacherSpecificClass/AddAssignments';
 import addStudentToCourse from './Components/TeacherSpecificClass/addStudentToCourse';
+import AddDocuments from './Components/TeacherSpecificClass/AddDocuments';
 
 export default class App extends React.Component{
 
@@ -45,6 +46,7 @@ export default class App extends React.Component{
         <Route path="/student/:id/grades/:id2/quiz" component={Quiz}/>
         <Route path="/student/:id/grades/:id2/test" component={Test}/>
         <Route path='/teacher/:id/create_course' component={CreateCourseForm}/>
+        <Route path='/teacher/:id/class/:id/add_document' component={AddDocuments}/>
         {/* Settings won't have a route. Just an onclick for that page */}
     </BrowserRouter>
     )
